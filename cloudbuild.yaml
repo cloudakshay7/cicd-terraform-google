@@ -1,3 +1,5 @@
+logsBucket: gs://gcsterraform-bucket
+
 steps:
   # Step 1: Terraform Init
   - name: 'hashicorp/terraform:light'
@@ -25,4 +27,4 @@ substitutions:
 # Timeout for the build
 timeout: "1200s"
 
-logsBucket: gs://gcsterraform-bucket
+
