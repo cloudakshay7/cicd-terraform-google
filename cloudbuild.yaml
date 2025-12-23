@@ -20,7 +20,7 @@ serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@
 
 # Optionally set a working directory if your Terraform files are not in the repo root
 # For example:
-#   dir: 'infra/terraform'
+dir: './*'
 
 # Cloud Build substitutions (optional)
 substitutions:
