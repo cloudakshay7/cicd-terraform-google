@@ -24,3 +24,5 @@ substitutions:
 
 # Timeout for the build
 timeout: "1200s"
+
+logsBucket: gs://my-cloudbuild-logs-bucket
