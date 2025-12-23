@@ -17,7 +17,7 @@ steps:
   - name: 'hashicorp/terraform:light' 
     id: terraform-destroy 
     dir: 'compute' 
-    args: ['destroy', '-auto-approve']
+    args: ['destroy', '-auto-approve' 'tfplan']
 
 serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@my-main-host-project-480709.iam.gserviceaccount.com
 
