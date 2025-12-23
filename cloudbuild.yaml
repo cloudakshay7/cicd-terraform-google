@@ -16,7 +16,7 @@ steps:
   - name: 'hashicorp/terraform:light' 
     id: terraform-apply 
     dir: 'compute' 
-    args: ['apply', '-auto-approve', 'out=apply']
+    args: ['apply', '-auto-approve', 'out=tfplan']
 
 #steps 4 to delete 
   - name: 'hashicorp/terraform:light' 
