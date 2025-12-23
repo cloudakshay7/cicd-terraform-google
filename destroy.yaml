@@ -21,7 +21,7 @@ steps:
     args:
       - '-c'
       - |
-        terraform show -no-color tfplan | grep "No changes" && echo "No resources to destroy, skipping." > /workspace/skip_destroy || echo "Resources found, will destroy." > /workspace/do_destroy
+        terraform show -no-color tfplan | grep "No changes" && echo "No resources to destroy, skipping." > / || echo "Resources found, will destroy." > /compute
 
   # Step 4: Conditional Destroy
   - name: 'hashicorp/terraform:light'
@@ -31,7 +31,7 @@ steps:
     args:
       - '-c'
       - |
-        if grep -q "Resources found" /workspace/do_destroy; then
+        if grep -q "Resources found" /compute; then
           terraform destroy -auto-approve
         else
           echo "Skipping destroy step."
