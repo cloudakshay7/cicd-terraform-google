@@ -14,10 +14,14 @@ steps:
     args: ['plan', '-out=tfplan']
 
   # Step 3: Terraform Apply
-  - name: 'hashicorp/terraform:light'
-    id: terraform-apply
-    dir: 'compute'
-    args: ['apply', '-auto-approve', 'tfplan']
+#  - name: 'hashicorp/terraform:light'
+#    id: terraform-apply
+#    dir: 'compute'
+ #   args: ['apply', '-auto-approve', 'tfplan']
+  - name: 'hashicorp/terraform:light' 
+    id: terraform-destroy 
+    dir: 'compute' 
+    args: ['destroy', '-auto-approve']
 
 serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@my-main-host-project-480709.iam.gserviceaccount.com
 
