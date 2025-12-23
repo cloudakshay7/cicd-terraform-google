@@ -14,10 +14,11 @@ steps:
     args: ['plan', '-out=tfplan']
 
   # Step 3: Terraform Apply
-#  - name: 'hashicorp/terraform:light'
-#    id: terraform-apply
-#    dir: 'compute'
- #   args: ['apply', '-auto-approve', 'tfplan']
+  - name: 'hashicorp/terraform:light'
+    id: terraform-apply
+    dir: 'compute'
+    args: ['apply', '-auto-approve', 'tfplan']
+#steps 4 to delete 
   - name: 'hashicorp/terraform:light' 
     id: terraform-destroy 
     dir: 'compute' 
