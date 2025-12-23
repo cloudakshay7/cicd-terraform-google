@@ -16,6 +16,8 @@ steps:
     id: terraform-apply
     args: ['apply', '-auto-approve', 'tfplan']
 
+serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@my-main-host-project-480709.iam.gserviceaccount.com
+
 # Optionally set a working directory if your Terraform files are not in the repo root
 # For example:
 #   dir: 'infra/terraform'
