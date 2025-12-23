@@ -1,5 +1,13 @@
+provider "google" {
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
+}
+
+
 # Create a Compute Engine instance
 resource "google_compute_instance" "default" {
+  
   name         = var.instance_name
   machine_type = "e2-medium"
   zone         = var.zone
@@ -27,3 +35,4 @@ resource "google_compute_instance" "default" {
 
   tags = ["terraform", "demo"]
 }
+
