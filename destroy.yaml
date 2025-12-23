@@ -1,0 +1,49 @@
+logsBucket: gs://gcsterraform-bucket
+
+steps:
+  # Step 1: Terraform Init
+  - name: 'hashicorp/terraform:light'
+    id: terraform-init
+    dir: 'compute'
+    args: ['init', '-input=false']
+
+  # Step 2: Terraform Plan (destroy mode)
+  - name: 'hashicorp/terraform:light'
+    id: terraform-plan-destroy
+    dir: 'compute'
+    args: ['plan', '-destroy', '-out=tfplan']
+
+  # Step 3: Check if plan has changes
+  - name: 'hashicorp/terraform:light'
+    id: terraform-show
+    dir: 'compute'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        terraform show -no-color tfplan | grep "No changes" && echo "No resources to destroy, skipping." > /workspace/skip_destroy || echo "Resources found, will destroy." > /workspace/do_destroy
+
+  # Step 4: Conditional Destroy
+  - name: 'hashicorp/terraform:light'
+    id: terraform-destroy
+    dir: 'compute'
+    entrypoint: 'sh'
+    args:
+      - '-c'
+      - |
+        if grep -q "Resources found" /workspace/do_destroy; then
+          terraform destroy -auto-approve
+        else
+          echo "Skipping destroy step."
+        fi
+
+
+serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@my-main-host-project-480709.iam.gserviceaccount.com
+
+
+# Cloud Build substitutions (optional)
+substitutions:
+  _TF_DIR: "."
+
+# Timeout for the build
+timeout: "1200s"
