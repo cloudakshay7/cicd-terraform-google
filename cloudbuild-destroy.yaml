@@ -1,18 +1,15 @@
 logsBucket: gs://gcsterraform-bucket
 
 steps:
-  # Step 1: Terraform Init
   - name: 'hashicorp/terraform:light'
     id: terraform-init
-    dir: 'compute'   # adjust to the folder where your main.tf lives
-    args: ['init']
+    dir: 'compute'
+    args: ['init', '-input=false']
 
-  # Step 2: Terraform Destroy
   - name: 'hashicorp/terraform:light'
     id: terraform-destroy
     dir: 'compute'
     args: ['destroy', '-auto-approve']
-
 
 
 serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@my-main-host-project-480709.iam.gserviceaccount.com
