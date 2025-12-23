@@ -1,0 +1,26 @@
+steps:
+  # Step 1: Terraform Init
+  - name: 'hashicorp/terraform:light'
+    id: terraform-init
+    args: ['init']
+
+  # Step 2: Terraform Plan
+  - name: 'hashicorp/terraform:light'
+    id: terraform-plan
+    args: ['plan', '-out=tfplan']
+
+  # Step 3: Terraform Apply
+  - name: 'hashicorp/terraform:light'
+    id: terraform-apply
+    args: ['apply', '-auto-approve', 'tfplan']
+
+# Optionally set a working directory if your Terraform files are not in the repo root
+# For example:
+#   dir: 'infra/terraform'
+
+# Cloud Build substitutions (optional)
+substitutions:
+  _TF_DIR: "."
+
+# Timeout for the build
+timeout: "1200s"
