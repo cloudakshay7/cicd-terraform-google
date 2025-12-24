@@ -8,6 +8,7 @@ steps:
     args: ['init']
 
 
+
   # Step 2: Terraform Plan
   - name: 'hashicorp/terraform:light'
     id: terraform-plan
