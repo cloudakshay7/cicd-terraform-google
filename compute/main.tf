@@ -4,6 +4,7 @@ provider "google" {
   zone        = var.zone
 }
 
+
 # Create a Compute Engine instance
 resource "google_compute_instance" "default" {
   
@@ -35,6 +36,7 @@ resource "google_compute_instance" "default" {
 
   tags = ["terraform", "demo"]
 }
+
 
 
 
