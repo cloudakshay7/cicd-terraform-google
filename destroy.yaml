@@ -20,6 +20,7 @@ steps:
 #    args: ['apply', '-auto-approve' ]
 
 
+
 #steps 4 to delete 
   - name: 'hashicorp/terraform:light' 
     id: terraform-destroy 
