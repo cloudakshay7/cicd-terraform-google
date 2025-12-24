@@ -20,11 +20,6 @@ steps:
     args: ['apply', '-auto-approve' ]
 
 
-#steps 4 to delete 
-  - name: 'hashicorp/terraform:light' 
-    id: terraform-destroy 
-    dir: 'compute'
-    args: ['destroy', '-auto-approve']
 
 serviceAccount:  projects/my-main-host-project-480709/serviceAccounts/terraform@my-main-host-project-480709.iam.gserviceaccount.com
 
