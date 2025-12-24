@@ -11,6 +11,7 @@ resource "google_compute_instance" "default" {
   machine_type = "e2-medium"
   zone         = var.zone
 
+
   # Boot disk
   boot_disk {
     initialize_params {
@@ -34,5 +35,6 @@ resource "google_compute_instance" "default" {
 
   tags = ["terraform", "demo"]
 }
+
 
 
